@@ -42,12 +42,9 @@ def sync_endpoint(client,
 
     page_size = 1000
     page_number = 1
-    while True:
-        params = {
-            'page_size': page_size,
-            'page_number': page_number
-        }
+    params = set_params(page_size, page_number)
 
+    while True:
         data = client.get(path,
                           params=params,
                           endpoint=stream_name,
@@ -92,8 +89,14 @@ def sync_endpoint(client,
             # each endpoint has a different max page size, the server will send the one that is forced
             page_size = data['page_size']
             page_number += 1
+            params = set_params(page_size, page_number, data.get('next_page_token', None))
+
         else:
             break
+
+
+def set_params(page_size, page_number, token=None):
+    return {'page_size': page_size, 'page_number': page_number, 'next_page_token': token}
 
 def update_current_stream(state, stream_name=None):  
     set_currently_syncing(state, stream_name) 

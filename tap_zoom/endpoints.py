@@ -17,7 +17,7 @@ ENDPOINTS_CONFIG = {
                 },
                 'children': {
                     'meetings': {
-                        'paginate': False,
+                        'paginate': True,
                         'path': 'meetings/{meeting_id}',
                         'pk': ['uuid'],
                         'provides': {
@@ -25,13 +25,13 @@ ENDPOINTS_CONFIG = {
                         },
                         'children': {
                             'meeting_poll_results': {
-                                'paginate': False,
+                                'paginate': True,
                                 'path': 'past_meetings/{meeting_uuid}/polls',
                                 'pk': ['meeting_uuid', 'email'],
                                 'data_key': 'questions'
                             },
                             'meeting_files': {
-                                'paginate': False,
+                                'paginate': True,
                                 'path': 'past_meetings/{meeting_uuid}/files',
                                 'pk': ['meeting_uuid', 'file_name'],
                                 'data_key': 'in_meeting_files'
@@ -49,13 +49,13 @@ ENDPOINTS_CONFIG = {
                         'data_key': 'polls'
                     },
                     'meeting_questions': {
-                        'paginate': False,
+                        'paginate': True,
                         'path': 'meetings/{meeting_id}/registrants/questions',
                         'pk': ['meeting_id'],
                         'ignore_zoom_error_codes': [3000]
                     },
                     'report_meetings': {
-                        'paginate': False,
+                        'paginate': True,
                         'path': 'report/meetings/{meeting_id}',
                         'pk': ['uuid']
                     },
@@ -76,7 +76,7 @@ ENDPOINTS_CONFIG = {
                 },
                 'children': {
                     'webinars': {
-                        'paginate': False,
+                        'paginate': True,
                         'path': 'webinars/{webinar_id}',
                         'pk': ['uuid'],
                         'provides': {
@@ -90,19 +90,19 @@ ENDPOINTS_CONFIG = {
                                 'ignore_http_error_codes': [404]
                             },
                             'webinar_poll_results': {
-                                'paginate': False,
+                                'paginate': True,
                                 'path': 'past_webinars/{webinar_uuid}/polls',
                                 'pk': ['webinar_uuid', 'email'],
                                 'data_key': 'questions'
                             },
                             'webinar_qna_results': {
-                                'paginate': False,
+                                'paginate': True,
                                 'path': 'past_webinars/{webinar_uuid}/qa',
                                 'pk': ['webinar_uuid', 'email'],
                                 'data_key': 'questions'
                             },
                             'webinar_files': {
-                                'paginate': False,
+                                'paginate': True,
                                 'path': 'past_webinars/{webinar_uuid}/files',
                                 'pk': ['webinar_uuid', 'file_name'],
                                 'data_key': 'in_meeting_files'
@@ -125,7 +125,7 @@ ENDPOINTS_CONFIG = {
                         'data_key': 'polls'
                     },
                     'webinar_questions': {
-                        'paginate': False,
+                        'paginate': True,
                         'path': 'webinars/{webinar_id}/registrants/questions',
                         'pk': ['webinar_id'],
                         'ignore_zoom_error_codes': [3000]
@@ -136,7 +136,7 @@ ENDPOINTS_CONFIG = {
                         'data_key': 'tracking_sources'
                     },
                     'report_webinars': {
-                        'paginate': False,
+                        'paginate': True,
                         'path': 'report/webinars/{webinar_id}',
                         'pk': ['uuid']
                     },
